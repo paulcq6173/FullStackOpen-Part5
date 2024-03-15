@@ -116,7 +116,7 @@ describe('Blog app', function () {
             cy.get('@theButton').click();
             cy.get('@theButton').should('contain', 'hide');
 
-            cy.get('html').should('not.contain', 'dlete');
+            cy.get('html').should('not.contain', 'delete');
           });
         });
 
@@ -147,82 +147,3 @@ describe('Blog app', function () {
     });
   });
 });
-
-/*describe('Bloglist app', function () {
-  beforeEach(function () {
-    cy.request('POST', `${Cypress.env('BACKEND')}/testing/reset`);
-    const user = {
-      name: 'Spencer',
-      username: 'Oswell Spencer',
-      password: '1111',
-    };
-    cy.request('POST', `${Cypress.env('BACKEND')}/users`, user);
-    cy.visit('http://localhost:5173');
-  });
-
-  it('front page can be opened', function () {
-    cy.contains('Blogs');
-    cy.contains(
-      'Bloglist app, Full-Stack-Open-Courses, University of Helsinki 2024'
-    );
-  });
-
-  it('login fails with wrong password', function () {
-    cy.contains('login').click();
-    cy.get('#username').type('Oswell Spencer');
-    cy.get('#password').type('1133');
-    cy.get('#login-button').click();
-
-    cy.get('.error')
-      .should('contain', 'Error: Invalid username or password')
-      .and('have.css', 'color', 'rgb(255, 0, 0)')
-      .and('have.css', 'border-style', 'solid');
-
-    cy.get('html').should('not.contain', 'Oswell Spencer logged in');
-  });
-
-  it('user can login', function () {
-    cy.get('#username').type('Oswell Spencer');
-    cy.get('#password').type('1111');
-    cy.get('#login-button').click();
-
-    cy.contains('Oswell Spencer logged in');
-  });
-
-  describe('when logged in', function () {
-    // Set browser login status
-    beforeEach(function () {
-      cy.login({ username: 'Oswell Spencer', password: '1111' });
-    });
-
-    it('a new blog can be created', function () {
-      cy.contains('create new blog').click();
-      cy.get('#input-title').type('I want to be the god');
-      cy.get('#input-author').type('Oswell Spencer');
-      cy.get('#input-url').type(
-        'https://residentevil.fandom.com/wiki/Oswell_E._Spencer,_Earl_Spencer'
-      );
-      cy.contains('create').click();
-    });
-
-    describe('and a blog exists', function () {
-      beforeEach(function () {
-        cy.login({ username: 'Oswell Spencer', password: '1111' });
-        cy.createBlog({
-          title: 'I want to be the god',
-          author: 'Oswell Spencer',
-          url: 'https://residentevil.fandom.com/wiki/Oswell_E._Spencer,_Earl_Spencer',
-        });
-      });
-
-      it('one of those can add likes', function () {
-        cy.contains('I want to be the god')
-          .parent()
-          .find('button')
-          .as('theButton');
-        cy.get('@theButton').click();
-        cy.get('@theButton').should('contain', 'view');
-      });
-    });
-  });
-});*/
